@@ -1,0 +1,45 @@
+#canvas1 {
+    width: 800px;
+    height: 600px;
+    border: 1px solid black;
+}
+
+/* @keyframes moveRight {
+    0%{
+     left: 0%;
+    }
+    100%{
+      left: 100%;
+    }
+    
+}
+
+@keyframes moveLeft {
+    0%{
+     right: 0px;
+    }
+    100%{
+        right: 100px;
+    }
+    
+}
+
+/* @keyframes moveBottom {
+    0%{
+     top: 50%;
+    }
+    100%{
+        top: 100%;
+    }
+    
+} */
+
+/* @keyframes moveTop {
+    0%{
+     bottom: 0%;
+    }
+    100%{
+        bottom: 100%;
+    }
+    
+}  */
