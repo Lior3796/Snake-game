@@ -13,19 +13,19 @@ class Snake {
 	snakeMove(direction, dt) {
 		switch (direction) {
 			case 39:
-				this.LeftToRight(dt, ctx);
+				this.LeftToRight(Math.floor(dt), ctx);
 				break;
 
 			case 40:
-				this.upToDown(dt, ctx);
+				this.upToDown(Math.floor(dt), ctx);
 				break;
 
 			case 38:
-				this.downToUp(dt, ctx);
+				this.downToUp(Math.floor(dt), ctx);
 				break;
 
 			case 37:
-				this.rightToLeft(dt, ctx);
+				this.rightToLeft(Math.floor(dt), ctx);
 				break;
 		}
 	}
@@ -121,9 +121,28 @@ class Snake {
 		}
 	}
 }
+class Ball {
+	constructor(random, positionY, width, height) {
+		this.ball = document.getElementById("ball")
+		this.height = height
+		this.width = width
+		this.x = random
+		this.y = positionY
+		this.randomOne = random
+	}
+	Random() {
+		this.randomOne = Math.floor(Math.random() * 290)
+	}
 
+	drowBall(ctx, random) {
+		ctx.drawImage(this.ball, this.randomOne, this.y, this.height, this.width)
+	}
+
+
+}
 let gameScreen = document.getElementById("canvas1");
 let ctx = gameScreen.getContext("2d");
+const POINTS = document.getElementById('ponits')
 
 ctx.clearRect(0, 0, 800, 600);
 
@@ -133,13 +152,31 @@ let GAME_HEIGHT = window.innerHeight;
 let newSnake = new Snake(200, 100, 50, 5);
 let lastTime = 0;
 let currentDir = 40;
-
+let ballOne = new Ball(100, 48, 10, 10)
+let random;
+let point = 0
+function Random() {
+	let Points = point
+	return random = Math.floor(Math.random() * 290), point + Points
+}
+function BallPosition(snake, ball) {
+	switch (snake.position.x) {
+		case ball.randomOne:
+			ball.Random()
+			console.log("eat one");
+			point++;
+		default:
+			break;
+	}
+}
+POINTS.innerHTML = point
 function gameLoop(timestamp) {
 	let dt = timestamp - lastTime;
 	lastTime = timestamp;
 	ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 	newSnake.snakeMove(currentDir, dt);
-
+	ballOne.drowBall(ctx, random)
+	BallPosition(newSnake,ballOne)
 	document.addEventListener(
 		"keyup",
 		(e) => (currentDir = newSnake.snakeDirection(e.keyCode))

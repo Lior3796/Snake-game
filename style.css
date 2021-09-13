@@ -1,6 +1,9 @@
 #canvas1 {
     border: 1px solid black;
 }
+#ball{
+    display: none;
+}
 
 /* @keyframes moveRight {
     0%{
