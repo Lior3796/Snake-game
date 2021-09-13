@@ -181,14 +181,7 @@ function Random() {
 	let Points = point
 	return random = Math.floor(Math.random() * 290), point + Points
 }
-console.log(GAME_WIDTH);
-console.log(random);
-// Random()
-// console.log(random);
 POINTS.innerHTML = point
-// Handler.addEventListener('click', () => {
-// 	Random()
-// })
 function BallPosition(snake, ball) {
 	switch (snake.position.x ) {
 		case ball.randomOne :
